@@ -7,7 +7,7 @@
 3_|_|*|_|_|_|*|_|_|
 2_|_|_|*|_|*|_|_|_|
 1_|_|_|_|_|_|_|_|_|
-   a b c d e f g h                                  
+   a b c d e f g h
 Шахматный конь ходит буквой “Г” — на две клетки по вертикали в любом
 направлении и на одну клетку по горизонтали,
 или наоборот. Даны две различные клетки шахматной доски, определите, может ли
@@ -19,8 +19,6 @@
 # declare 2 dicts and a list
 pos_current_dict = {}
 pos_desired_dict = {}
-sucess_list = []
-
 
 # take input from user - 1.chess figure position and 2. where he wants to go
 # DATA example: g5 or G5. others aren't acceptable
@@ -86,51 +84,17 @@ while True:
 
 
 # check if desired position attainable
-if (pos_desired_dict["char"] == pos_current_dict["char"] or
-        pos_desired_dict["num"] == pos_current_dict["num"]):
-    answer = False
-    print(answer)
-    exit()
+"""
+                            Logic explanation
+ Knigt goes on 2 positions straigt (along number axis or letter axis) and on
+ 1 position to the side (opposite axis). So there are 2 cirkumstances wee
+ need to check to see if the desired position attainable by the knight.
+"""
 
-if pos_desired_dict["char"] > pos_current_dict["char"]:
-    if pos_desired_dict["num"] > pos_current_dict["num"]:
-        # var 1
-        sucess_list.append(chr(pos_current_dict["char"] + 1) +
-                           str(pos_current_dict["num"] + 2))
+a = abs(pos_desired_dict["char"] - pos_current_dict["char"])
+b = abs(pos_desired_dict["num"] - pos_current_dict["num"])
 
-        # var 2
-        sucess_list.append(chr(pos_current_dict["char"] + 2) +
-                           str(pos_current_dict["num"] + 1))
-
-    else:
-        sucess_list.append(chr(pos_current_dict["char"] + 1) +
-                           str(pos_current_dict["num"] - 2))
-
-        # var 2
-        sucess_list.append(chr(pos_current_dict["char"] + 2) +
-                           str(pos_current_dict["num"] - 1))
-
-else:
-    if pos_desired_dict["num"] > pos_current_dict["num"]:
-        # var 1
-        sucess_list.append(chr(pos_current_dict["char"] - 1) +
-                           str(pos_current_dict["num"] + 2))
-
-        # var 2
-        sucess_list.append(chr(pos_current_dict["char"] - 2) +
-                           str(pos_current_dict["num"] + 1))
-
-    else:
-        sucess_list.append(chr(pos_current_dict["char"] - 1) +
-                           str(pos_current_dict["num"] - 2))
-
-        # var 2
-        sucess_list.append(chr(pos_current_dict["char"] - 2) +
-                           str(pos_current_dict["num"] - 1))
-       
-# answer
-if pos_desired in sucess_list:
+if (a == 2 and b == 1) or (a == 1 and b == 2):
     print("You can make such move")
 else:
     print("You can not make such move")
-
