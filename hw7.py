@@ -13,13 +13,14 @@ if not i.isdigit():
     print("provide positive integer")
 
 # print i
-print(i, "\t")
+print(i, end="\t")
 
 # convert str to an int
 i = int(i)
 
 # initialize
-square = i
+square = 1
 
-while square < i:
-    print
+while square ** 2 < i:
+    print(square**2, end=" ")
+    square += 1
