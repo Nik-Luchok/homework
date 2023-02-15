@@ -21,6 +21,6 @@ i = int(i)
 # initialize
 square = 1
 
-while square ** 2 < i:
+while square ** 2 <= i:
     print(square**2, end=" ")
     square += 1
