@@ -16,6 +16,7 @@ try:
         raise ValueError
 except ValueError:
     print("Provide valid integer value")
+    exit()
 
 # print the pyramid
 for row in range(rows - 1):
