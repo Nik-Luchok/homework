@@ -2,6 +2,7 @@
 
 Given multiple strings. Find out how many times
 appears the most used word in the whole text, using dict.
+If there are a few, print the latest (that appears in the text).
 
 """
 
@@ -15,7 +16,7 @@ text2 = input("Enter text: ")
 text3 = input("Enter text: ")
 
 # concatenate string into one text, add whitespace between
-text = text1 + ' ' + text2 + ' ' + text3
+text = ' '.join([text1, text2, text3])
 
 # iterate thru text to find words
 for ch in text:
@@ -55,9 +56,10 @@ if len(word):
 # find out how many times were used the most used words
 words_max = max(words_dict.values())
 
-# iterate dict, print the words that have this max value
-print("Most used words are:")
-for word in words_dict:
+# iterate the dict in reversed order, print the last most used word
+print("Last most used word is:")
+for word in reversed(words_dict):
     if words_dict[word] == words_max:
         print(word, end=" ")
+        break
 print()
